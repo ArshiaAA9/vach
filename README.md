@@ -1,6 +1,4 @@
 # Vach
-A low-latency voice streaming project that lets you control Spotify on your PC using simple voice commands such as play, pause, next, and previous.
-
 Vach streams microphone audio from an Android device to a desktop server over WebSockets. The server uses Whisper to transcribe the audio into text and then parses the transcription to execute supported commands.
 
 More commands and features will be added in future releases.
