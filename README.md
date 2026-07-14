@@ -1,6 +1,6 @@
 # Vach
 A low-latency voice streaming project for using simple commands like next, previous, stop, play with spotify.  
-The project works by streaming your voice from your android phone to your pc and then using Whisper ai to transcribe it into text  
+The project works by streaming your voice from your android phone to your pc using websockets and using Whisper ai to transcribe it into text  
 then it will parse it for commands.
   More commands will be added later.
 
