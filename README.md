@@ -23,4 +23,4 @@ Open a server by running:
 cd build
 ./vach -s
 ```
-then open the android program and enter the server's ip
+Launch the Android app, enter the server's local IP address, and connect.
