@@ -1,20 +1,21 @@
 # Vach
-A low-latency voice streaming project for using simple commands like next, previous, stop, play with spotify.  
-The project works by streaming your voice from your android phone to your pc using websockets and using Whisper ai to transcribe it into text
-then it will parse it for commands.  
-More commands will be added later.
+A low-latency voice streaming project that lets you control Spotify on your PC using simple voice commands such as play, pause, next, and previous.
+
+Vach streams microphone audio from an Android device to a desktop server over WebSockets. The server uses Whisper to transcribe the audio into text and then parses the transcription to execute supported commands.
+
+More commands and features will be added in future releases.
 
 # Installation
 you can either download the [latest release](https://github.com/ArshiaAA9/Vach/releases/latest) or build the project yourself
 ## Manual Building:
-Cloning and building the server side:
+Clone the repository and build the server:
 ```bash
 git clone https://github.com/ArshiaAA9/vach.git
 cd vach
 cmake -B build
 cmake --build build --parallel $(nproc)
 ```
-For the android part [Download the latest APK](https://github.com/ArshiaAA9/Vach/releases/latest)
+Then download and install the Android APK from the [the latest release](https://github.com/ArshiaAA9/Vach/releases/latest)
 
 # Usage
 Open a server by running: 
