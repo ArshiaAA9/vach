@@ -6,7 +6,7 @@ Vach streams microphone audio from an Android device to a desktop server over We
 More commands and features will be added in future releases.
 
 # Installation
-you can either download the [latest release](https://github.com/ArshiaAA9/Vach/releases/latest) or build the project yourself
+You can either download the [latest release](https://github.com/ArshiaAA9/Vach/releases/latest) or build the project yourself
 ## Manual Building:
 Clone the repository and build the server:
 ```bash
