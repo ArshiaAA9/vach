@@ -16,11 +16,9 @@
 namespace asio = boost::asio;
 namespace beast = boost::beast;
 namespace websocket = beast::websocket;
-using tcp = asio::ip::tcp;
+using tcp = boost::asio::ip::tcp;
 
-const std::string LOCAL_IP = "192.168.0.101";
-const std::string LOCAL_IP_ON_HOTSPOT = "10.135.79.7";
-const std::string HOST_IP = LOCAL_IP;
+// const std::string LOCAL_IP = "192.168.0.103"; // FOR DEBUG PURPOSES
 const unsigned short PORT = 9002;
 const size_t CHUNK_SAMPLES = 16000 * 3;
 
@@ -30,6 +28,21 @@ enum command {
     STOP_SONG,
     PLAY_SONG,
 };
+
+asio::ip::address getLocalIp() {
+    boost::asio::io_context io;
+
+    boost::asio::ip::udp::socket socket(io);
+    socket.open(boost::asio::ip::udp::v4());
+
+    // Doesn't actually send any packets
+    socket.connect(boost::asio::ip::udp::endpoint(boost::asio::ip::make_address("8.8.8.8"), 53));
+    asio::ip::address localIP = socket.local_endpoint().address();
+
+    std::cout << "Local IP: " << localIP.to_string() << '\n';
+
+    return localIP;
+}
 
 std::string parse_command(const std::string& text) {
     std::string lower = text;
@@ -131,13 +144,13 @@ void websocket_session(tcp::socket socket, const Whisper& whisper) {
     }
 }
 
-void runServer(asio::io_context& ioc, const std::string& hostIp, const unsigned short port, const Whisper& whisper) {
-    std::cout << "[server] trying to create a socket on " << hostIp << ':' << port << '\n';
-    asio::ip::address serverIp = asio::ip::make_address(hostIp);
+void runServer(
+    asio::io_context& ioc, const asio::ip::address& serverIp, const unsigned short port, const Whisper& whisper) {
+    std::cout << "[server] trying to create a socket on " << serverIp << ':' << port << '\n';
     tcp::endpoint endpoint(serverIp, port);
     tcp::acceptor acceptor(ioc, endpoint);
 
-    std::cout << "[server] listening on ws://" << hostIp << ':' << port << "\n\n";
+    std::cout << "[server] listening on ws://" << serverIp << ':' << port << "\n\n";
 
     while (true) {
         tcp::socket socket(ioc);
@@ -194,13 +207,13 @@ int main(int argc, char* argv[]) {
         try {
             Whisper whisper{};
             asio::io_context io_context;
-            runServer(io_context, HOST_IP, PORT, whisper);
+            runServer(io_context, getLocalIp(), PORT, whisper);
         } catch (std::exception& e) {
             std::cerr << "Server error: " << e.what() << "\n";
         }
     } else if (arg == "-c" || arg == "--client") {
         std::cout << "client\n";
-        run_client(HOST_IP, std::to_string(PORT));
+        run_client(getLocalIp().to_string(), std::to_string(PORT));
     } else {
         std::cerr << "Unknown argument: " << arg << "\n";
         return 1;
