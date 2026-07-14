@@ -1,5 +1,5 @@
 # Vach
-A low-latency voice streaming project for using simple commands like next, previous, stop, play with spotify.
+A low-latency voice streaming project for using simple commands like next, previous, stop, play with spotify.  
 More commands will be added later.
 
 # Installation
