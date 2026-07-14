@@ -1,6 +1,8 @@
 # Vach
 
 # Installation
+you can either download the [latest release](https://github.com/ArshiaAA9/Vach/releases/latest) or build the project yourself
+## Manual Building:
 Cloning and building the server side:
 ```bash
 git clone https://github.com/ArshiaAA9/vach.git
@@ -8,7 +10,7 @@ cd vach
 cmake -B build
 cmake --build build --parallel $(nproc)
 ```
-For the android part [Download the latest APK](https://github.com/yourusername/Vach/releases/latest)
+For the android part [Download the latest APK](https://github.com/ArshiaAA9/Vach/releases/latest)
 
 # Usage
 Open a server by running: 
