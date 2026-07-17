@@ -196,7 +196,7 @@ int main(int argc, char* argv[]) {
     if (argc < 2) {
         std::cout << "Usage:\n"
                   << "  " << argv[0] << " -s   (run as server)\n"
-                  << "  " << argv[0] << " -c   (run test client)\n";
+                  << "  " << argv[0] << " -c   (run test client for debugging)\n";
         return 0;
     }
 

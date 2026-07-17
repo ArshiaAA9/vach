@@ -4,7 +4,7 @@ Vach streams microphone audio from an Android device to a desktop server over We
 More commands and features will be added in future releases.
 
 # Installation
-You can either download the [latest release](https://github.com/ArshiaAA9/Vach/releases/latest) or build the project manually yourself
+You can either download the [latest release](https://github.com/ArshiaAA9/vach/releases/latest) or build the project manually yourself
 ## Manual Building:
 Clone the repository and build the server:
 ```bash
@@ -13,7 +13,7 @@ cd vach
 cmake -B build
 cmake --build build --parallel $(nproc)
 ```
-Then download and install the Android APK from the [the latest release](https://github.com/ArshiaAA9/Vach/releases/latest)
+Then download and install the Android APK from the [the latest release](https://github.com/ArshiaAA9/vach-phone/releases/latest)
 
 # Usage
 Open a server by running: 
